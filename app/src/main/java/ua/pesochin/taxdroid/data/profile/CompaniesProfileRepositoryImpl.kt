@@ -1,4 +1,4 @@
-package ua.pesochin.taxdroid.data
+package ua.pesochin.taxdroid.data.profile
 
 import ua.pesochin.taxdroid.domain.CompaniesProfileRepository
 import ua.pesochin.taxdroid.domain.CompanyProfile

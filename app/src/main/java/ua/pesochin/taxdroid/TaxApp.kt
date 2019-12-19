@@ -2,31 +2,36 @@ package ua.pesochin.taxdroid
 
 import android.app.Application
 import androidx.room.Room
-import ua.pesochin.taxdroid.data.CompaniesProfileDao
-import ua.pesochin.taxdroid.data.CompaniesProfileRepositoryImpl
-import ua.pesochin.taxdroid.data.TaxDatabase
+import ua.pesochin.taxdroid.data.preferences.PreferenceRepositoryImpl
+import ua.pesochin.taxdroid.data.preferences.SharedPreferencesDao
+import ua.pesochin.taxdroid.data.profile.CompaniesProfileRepositoryImpl
+import ua.pesochin.taxdroid.data.profile.TaxDatabase
 import ua.pesochin.taxdroid.domain.CompaniesProfileRepository
+import ua.pesochin.taxdroid.domain.PreferenceRepository
 
 class TaxApp : Application() {
 
-    private lateinit var database: TaxDatabase
-
-    private lateinit var profileDao: CompaniesProfileDao
-
     lateinit var profileRepository: CompaniesProfileRepository
+
+    lateinit var preferenceRepository: PreferenceRepository
 
     override fun onCreate() {
         super.onCreate()
 
-        database = Room.databaseBuilder(
+        val database = Room.databaseBuilder(
             applicationContext,
             TaxDatabase::class.java,
             "tax-database"
         ).build()
 
-        profileDao = database.getProfileDao()
+        val profileDao = database.getProfileDao()
 
         profileRepository = CompaniesProfileRepositoryImpl(profileDao)
+
+
+        val preferencesDao = SharedPreferencesDao(applicationContext)
+
+        preferenceRepository = PreferenceRepositoryImpl(preferencesDao)
     }
 
 }

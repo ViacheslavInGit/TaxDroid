@@ -6,6 +6,8 @@
     <string name="back">back</string>
     <string name="edit">edit</string>
     <string name="new_word">new</string>
+    <string name="set_phone_number">set phone number</string>
+    <string name="update">update</string>
 
     <string name="company_full_name">company full name</string>
     <string name="edrpou_code">edrpou code</string>

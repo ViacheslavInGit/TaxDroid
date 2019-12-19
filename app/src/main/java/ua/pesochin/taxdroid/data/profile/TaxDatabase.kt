@@ -1,7 +1,8 @@
-package ua.pesochin.taxdroid.data
+package ua.pesochin.taxdroid.data.profile
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import ua.pesochin.taxdroid.data.profile.CompaniesProfileDao
 import ua.pesochin.taxdroid.domain.CompanyProfile
 
 @Database(

@@ -13,11 +13,14 @@ import ua.pesochin.taxdroid.R
 import ua.pesochin.taxdroid.TaxApp
 import ua.pesochin.taxdroid.domain.CompaniesProfileRepository
 import ua.pesochin.taxdroid.domain.CompanyProfile
+import ua.pesochin.taxdroid.domain.PreferenceRepository
 import ua.pesochin.taxdroid.util.*
 
 class CompanyProfileEditorActivity : AppCompatActivity() {
 
     private var profileRepository: CompaniesProfileRepository? = null
+
+    private var preferenceRepository: PreferenceRepository? = null
 
     private var profile: CompanyProfile? = null
 
@@ -26,6 +29,7 @@ class CompanyProfileEditorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_company_profile_editor)
 
         profileRepository = (application as TaxApp).profileRepository
+        preferenceRepository = (application as TaxApp).preferenceRepository
 
         getCompanyProfile()?.let {
             profile = it
@@ -61,7 +65,10 @@ class CompanyProfileEditorActivity : AppCompatActivity() {
         val inputProfile = getInputProfile()
 
         if (inputProfile.isValid()) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:${PHONE_TO_SEND_SMS}"))
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("sms:${preferenceRepository?.getPhoneNumber()}")
+            )
 
             intent.putExtra("sms_body", inputProfile.toString())
 
@@ -110,9 +117,5 @@ class CompanyProfileEditorActivity : AppCompatActivity() {
             authorizedCapital = authorizedCapitalEditText.parseInt(defaultValue = -1),
             contactInfo = contactInfoEditText.text.toString()
         )
-    }
-
-    companion object {
-        const val PHONE_TO_SEND_SMS = "+380508155733"
     }
 }

@@ -6,6 +6,8 @@
     <string name="back">обратно</string>
     <string name="edit">редактировать</string>
     <string name="new_word">новый</string>
+    <string name="set_phone_number">указать номер телефона</string>
+    <string name="update">обновить</string>
 
     <string name="company_full_name">полное имя компании</string>
     <string name="edrpou_code">код УДРПОУ</string>
