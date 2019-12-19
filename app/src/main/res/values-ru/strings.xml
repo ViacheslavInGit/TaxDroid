@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">НалогДроид</string>
+    <string name="add_item">добавить элемент</string>
+    <string name="save">сохранить</string>
+    <string name="back">обратно</string>
+    <string name="edit">редактировать</string>
+    <string name="new_word">новый</string>
+
+    <string name="company_full_name">полное имя компании</string>
+    <string name="edrpou_code">код УДРПОУ</string>
+    <string name="authorized_person_name">имя основателя</string>
+    <string name="authorized_capital">уставной капитал</string>
+    <string name="registration_date">дата регистрации дд/мм/гггг</string>
+    <string name="contact_info">контактная информация</string>
+
+</resources>
