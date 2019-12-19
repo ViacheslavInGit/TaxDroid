@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
+import ua.pesochin.taxdroid.util.toDateString
 
 @Entity
 @Parcelize
@@ -37,6 +38,15 @@ data class CompanyProfile(
                 registrationDate > 0 &&
                 authorizedCapital >= 0 &&
                 contactInfo.isNotBlank()
+    }
+
+    override fun toString(): String {
+        return "EDRPOU = $edrpouCode \n" +
+                "name = $fullName \n" +
+                "founder = $authorizedPersonName \n" +
+                "registration date = ${registrationDate.toDateString()} \n" +
+                "authorized capital = $authorizedCapital \n" +
+                "contact info = $contactInfo"
     }
 
     companion object {

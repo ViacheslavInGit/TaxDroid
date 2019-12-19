@@ -13,10 +13,7 @@ import ua.pesochin.taxdroid.R
 import ua.pesochin.taxdroid.TaxApp
 import ua.pesochin.taxdroid.domain.CompaniesProfileRepository
 import ua.pesochin.taxdroid.domain.CompanyProfile
-import ua.pesochin.taxdroid.util.getCompanyProfile
-import ua.pesochin.taxdroid.util.parseDate
-import ua.pesochin.taxdroid.util.parseInt
-import ua.pesochin.taxdroid.util.showErrorSnackbar
+import ua.pesochin.taxdroid.util.*
 
 class CompanyProfileEditorActivity : AppCompatActivity() {
 
@@ -35,7 +32,7 @@ class CompanyProfileEditorActivity : AppCompatActivity() {
 
             fullNameEditText.setText(it.fullName)
             edrpouCodeEditText.setText(it.edrpouCode.toString())
-            registrationDateEditText.setText("21/01/1998")   //Date(it.registrationDate).toString())
+            registrationDateEditText.setText(it.registrationDate.toDateString())
             authorizedPersonNameEditText.setText(it.authorizedPersonName)
             authorizedCapitalEditText.setText(it.authorizedCapital.toString())
             contactInfoEditText.setText(it.contactInfo)
