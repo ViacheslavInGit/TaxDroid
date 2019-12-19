@@ -8,13 +8,11 @@ import kotlinx.coroutines.*
 import ua.pesochin.taxdroid.R
 import ua.pesochin.taxdroid.TaxApp
 import ua.pesochin.taxdroid.domain.CompaniesProfileRepository
-import ua.pesochin.taxdroid.domain.CompanyProfile
-import kotlin.math.absoluteValue
-import kotlin.random.Random
+import ua.pesochin.taxdroid.util.navigateTo
 
-class CompaniesInfoActivity : AppCompatActivity() {
+class CompaniesProfileListActivity : AppCompatActivity() {
 
-    private val recyclerAdapter = CompaniesInfoAdapter()
+    private val recyclerAdapter = CompaniesProfileListAdapter()
 
     private var profileRepository: CompaniesProfileRepository? = null
 
@@ -27,21 +25,10 @@ class CompaniesInfoActivity : AppCompatActivity() {
 
         profileRepository = (application as TaxApp).profileRepository
 
-        //add mock data
-        GlobalScope.launch(Dispatchers.IO) {
-            profileRepository?.add(
-                CompanyProfile(
-                    edrpouCode = Random.nextInt().absoluteValue % 100_000_000,
-                    fullName = "fullName",
-                    registrationDate = System.currentTimeMillis(),
-                    authorizedPersonName = "Ivanov Dolboeb",
-                    authorizedCapital = 40,
-                    contactInfo = "+38012311223"
-                )
-            )
+        newCompanyProfileButton.setOnClickListener {
+            navigateTo(NewProfileActivity::class.java)
         }
     }
-
 
     @ExperimentalCoroutinesApi
     override fun onResume() {
@@ -58,10 +45,7 @@ class CompaniesInfoActivity : AppCompatActivity() {
                     recyclerAdapter.setProfileList(it)
                 }
             }
-
         }
-
-
     }
 
 
